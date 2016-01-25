@@ -18,14 +18,14 @@ $homeURL = esc_url( home_url( ) );
 
 //DECLARE THE SITE TITLE, SAVE A DB QUERY
 global $siteTitle;
-$siteTitle = 'REA WORDPRESS BLANK THEME';
+$siteTitle = get_bloginfo('name');
 
 //DECLARE THE PAGE EXCERPT
 global $siteDesc;
-$siteDesc = '';
+$siteDesc = get_bloginfo('description');
 ?>
 <!DOCTYPE html>
-<html lang="en" data-parent-slug="<?php echo $parentslug;?>" data-current="<?php echo $slug;?>" class="slug-<?php echo $slug;?>">
+<html lang="en">
 <head>
 
 <!-- ABOVE THE FOLD CSS -->
@@ -50,10 +50,8 @@ if ( is_front_page() ) {
 ?>
 
 <!-- HERE'S WHERE WE GET THE SITE DESCRIPTION -->
-<meta name="description" content="<?php if (have_posts() && is_single() OR is_page()):while(have_posts()):the_post();
-
-
-
+<?php
+if ( have_posts() && is_single() OR is_page()):while(have_posts()):the_post();
   if (get_the_excerpt()) {
     $out_excerpt = str_replace(array("\r\n", "\r", "\n", "[&hellip;]"), "", get_the_excerpt());
     //echo apply_filters('the_excerpt_rss', $out_excerpt);
@@ -61,16 +59,14 @@ if ( is_front_page() ) {
   } else {
     $siteDesc =  get_bloginfo('description');
   }
-
   if($siteDesc == '') {
     $siteDesc =  get_bloginfo('description');
   }
-
 endwhile;
-
 else: ?>
-<?php $siteDesc = ''; ?>
-<?php endif; ?><?php echo $siteDesc;?>" />
+
+<?php endif; ?>
+<meta name="description" content="<?php echo $siteDesc;?>" />
 
 <meta charset="UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -78,20 +74,7 @@ else: ?>
 
 
 
-<!-- icons & favicons -->
-<link rel="shortcut icon" href="<?php echo $siteDir;?>/assets/imgs/icons/favicon.ico" type="image/x-icon" />
-<link rel="apple-touch-icon" href="<?php echo $siteDir;?>/assets/imgs/icons/apple-touch-icon.png" />
-<link rel="apple-touch-icon" sizes="57x57" href="<?php echo $siteDir;?>/assets/imgs/imgs/icons/apple-touch-icon-57x57.png" />
-<link rel="apple-touch-icon" sizes="72x72" href="<?php echo $siteDir;?>/assets/imgs/icons/apple-touch-icon-72x72.png" />
-<link rel="apple-touch-icon" sizes="76x76" href="<?php echo $siteDir;?>/assets/imgs/icons/apple-touch-icon-76x76.png" />
-<link rel="apple-touch-icon" sizes="114x114" href="<?php echo $siteDir;?>/assets/imgs/icons/apple-touch-icon-114x114.png" />
-<link rel="apple-touch-icon" sizes="120x120" href="<?php echo $siteDir;?>/assets/imgs/icons/apple-touch-icon-120x120.png" />
-<link rel="apple-touch-icon" sizes="144x144" href="<?php echo $siteDir;?>/assets/imgs/icons/apple-touch-icon-144x144.png" />
-<link rel="apple-touch-icon" sizes="152x152" href="<?php echo $siteDir;?>/assets/imgs/icons/apple-touch-icon-152x152.png" />
-<!-- For Nokia -->
-<link rel="shortcut icon" href="<?php echo $siteDir;?>/assets/imgs/icons/apple-touch-icon.png">
-<!-- For everything else -->
-<link rel="shortcut icon" href="<?php echo $siteDir;?>/assets/imgs/icons/favicon.ico">
+<?php wp_site_icon();?>
 
 <!--  STUFF FOR IE8 WILL GET REMOVED ON COMPILATION // REMOVE THIS LINE TO RENDER IT
 <!--[if lte IE 8]>
@@ -114,7 +97,7 @@ else: ?>
 
 </head>
 
-<body <?php body_class(); ?> id="top">
+<body id="top">
 <div id="css-checker"></div>
 
-<ul><?php pll_the_languages();?></ul>
+<!--<ul><?php pll_the_languages();?></ul>-->

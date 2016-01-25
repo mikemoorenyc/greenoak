@@ -4,8 +4,8 @@ function siteInit() {
           FastClick.attach(document.body);
       }, false);
   }
-  
-  
+
+
   //GLOBALS
   ts = 250,
   tab = 401,
@@ -21,6 +21,9 @@ function siteInit() {
 
   //theHistory();
 
+
+
+  
 
   //CHECK IF CSS IS LOADED
   var thechecker = setInterval(function(){
