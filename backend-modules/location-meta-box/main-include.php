@@ -102,4 +102,7 @@ function location_save_meta_box_data( $post_id ) {
 	update_post_meta( $post_id, '_coordinates', $my_data );
 }
 add_action( 'save_post', 'location_save_meta_box_data' );
+
+
+///test
 ?>

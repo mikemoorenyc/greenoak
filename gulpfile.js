@@ -11,13 +11,13 @@ var sass = require('gulp-sass'),
     postcss = require('gulp-postcss'),
     mqpacker = require('css-mqpacker'),
     autoprefixer = require('autoprefixer');
-
+    var processors = [
+      autoprefixer({ browsers: ['last 2 versions'] }),
+      mqpacker
+    ];
 gulp.task('sass', function () {
 
-  var processors = [
-    autoprefixer({ browsers: ['last 2 versions'] }),
-    mqpacker
-  ];
+
 
   gulp.src(['sass/main.scss', 'sass/expanded.scss','sass/ie-fixes.scss','sass/editor-styles.scss'])
     .pipe(sass().on('error', sass.logError))
@@ -52,7 +52,7 @@ gulp.task('lint', function() {
 var  htmlclean = require('gulp-htmlclean');
 
 gulp.task('templatecrush', function() {
-  gulp.src(['*.php','*.html', '**/*.php','!custom-module-functions.php'])
+  gulp.src(['*.php','*.html','!custom-module-functions.php'])
     .pipe(changed('../'+buildDir))
     .pipe(htmlclean({}))
     .pipe(gulp.dest('../'+buildDir));
@@ -89,6 +89,21 @@ gulp.task('wpdump', function(){
     .pipe(gulp.dest('../'+buildDir));
 });
 
+gulp.task('backend-modules', function(){
+  gulp.src(['backend-modules/**/*.html', 'backend-modules/**/*.php'])
+  .pipe(htmlclean({}))
+  .pipe(gulp.dest('../'+buildDir+'/backend-modules'));
+  gulp.src(['backend-modules/**/*.scss'])
+  .pipe(sass().on('error', sass.logError))
+  .pipe(postcss(processors))
+  .pipe(minifyCSS({keepBreaks:false, keepSpecialComments: 0}))
+  .pipe(gulp.dest('../'+buildDir+'/backend-modules'));
+  gulp.src(['backend-modules/**/*.js'])
+  .pipe(uglify())
+  .on('error', console.error.bind(console))
+  .pipe(gulp.dest('../'+buildDir+'/backend-modules'));
+});
+
 gulp.task('watch', function() {
     gulp.watch('js/**/*.js', ['js']);
     gulp.watch(['sass/**/*'], ['sass']);
@@ -97,5 +112,6 @@ gulp.task('watch', function() {
     gulp.watch(['*.php', '*.html', '**/*.php'], ['templatecrush']);
     gulp.watch(['style.css', 'screenshot.png'], ['wpdump']);
     gulp.watch(['assets/svgs/*.svg'], ['svgstore']);
+    gulp.watch(['backend-modules/**/*'], ['backend-modules']);
 });
-gulp.task('build', [ 'js', 'imgmin', 'templatecrush', 'fontdump', 'wpdump','sass', 'svgstore']);
+gulp.task('build', [ 'js', 'imgmin', 'templatecrush', 'fontdump', 'wpdump','sass', 'svgstore', 'backend-modules']);
