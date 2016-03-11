@@ -121,3 +121,34 @@ blockquote {
     }
   }
 }
+
+
+.clock {
+  border-radius: 50%;
+  background: #efefef;
+  background-size: 88%;
+  height: 20em;
+  position: relative;
+  width: 20em;
+  border:3px solid black;
+  .hours {
+    width: 5px;
+    height: 3em;
+    background: black;
+    position:absolute;
+    left: 50%;
+    bottom: 50%;
+    margin-left:-2.5px;
+    transform-origin: bottom center;
+  }
+  .minutes {
+    width: 5px;
+    height: 7em;
+    background: black;
+    position:absolute;
+    left: 50%;
+    bottom: 50%;
+    margin-left:-2.5px;
+    transform-origin: bottom center;
+  }
+}
