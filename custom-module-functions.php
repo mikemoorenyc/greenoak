@@ -1,5 +1,5 @@
 <?php
-
+/*
 
 add_action( 'admin_menu', 'short_coder' );
 add_action( 'load-post-new.php', 'short_coder' );
@@ -99,5 +99,5 @@ ob_start();
 return ob_get_clean();
 }
 
-
+*/
 ?>

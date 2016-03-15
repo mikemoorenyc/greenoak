@@ -5,6 +5,19 @@ var gulp = require('gulp'),
     concat = require('gulp-concat'),
     changed = require('gulp-changed');
 
+
+
+var del = require('del'); // rm -rf
+//
+
+function clean() {
+  // You can use multiple globbing patterns as you would with `gulp.src`
+  // If you are using del 2.0 or above, return its promise
+  return del(['../'+buildDir+'/**'], {force:true});
+}
+gulp.task('clean', function(){
+  clean();
+});
 //CSS PROCESSING
 var sass = require('gulp-sass'),
     minifyCSS = require('gulp-minify-css'),

@@ -48,10 +48,24 @@ function content_cleaner($content) {
 
 
 //HOOK IN CUSTOM POST TYPES
-include 'custom-post-types/properties-post.php';
+include 'backend-modules/custom-post-types/properties-post.php';
 
 
 //LOCATION META BOX
-include 'location-meta-box/main-include.php';
+include 'backend-modules/location-meta-box/main-include.php';
+
+//REMOVE ADD MEDIA BUTTON
+include 'backend-modules/remove-add-media-button/remove-add-media-button.php';
+
+//ADD MAP BUTTON
+include 'backend-modules/add-map-button/include.php';
+//ADD VIDEO BUTTON
+include 'backend-modules/add-video-button/include.php';
+
+//MAP COMPONENT
+include 'backend-modules/map-component/entry-point.php';
+
+
+
 
 ?>
