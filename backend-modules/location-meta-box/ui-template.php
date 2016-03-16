@@ -155,3 +155,4 @@ function searchFetcher(location) {
   background: red;
   box-shadow: none !Important;
 }
+</style>
