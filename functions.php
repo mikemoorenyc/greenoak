@@ -50,7 +50,8 @@ function content_cleaner($content) {
 //HOOK IN CUSTOM POST TYPES
 include 'backend-modules/custom-post-types/properties-post.php';
 
-
+include 'backend-modules/custom-post-types/team.php';
+include 'backend-modules/custom-post-types/contacts.php';
 //LOCATION META BOX
 include 'backend-modules/location-meta-box/main-include.php';
 
@@ -65,6 +66,8 @@ include 'backend-modules/add-video-button/include.php';
 //MAP COMPONENT
 include 'backend-modules/map-component/entry-point.php';
 
+//RENAME NEWS
+include 'backend-modules/rename-news.php';
 
 
 

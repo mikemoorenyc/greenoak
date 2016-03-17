@@ -34,4 +34,31 @@ register_post_type( 'portfolio', $propargs );
 }
 
 add_action( 'init', 'post_types_init' );
+
+
+//CUSTOM TAX
+$region_labels = array(
+    'name' => _x( 'Regions', 'taxonomy general name' ),
+    'singular_name' => _x( 'Region', 'taxonomy singular name' ),
+
+    'search_items' =>  __( 'Search Regions' ),
+    'all_items' => __( 'All Region' ),
+    'parent_item' => __( 'Parent Region' ),
+    'parent_item_colon' => __( 'Parent Region:' ),
+    'edit_item' => __( 'Edit Region' ),
+    'update_item' => __( 'Update Region' ),
+    'add_new_item' => __( 'Add New Region' ),
+    'new_item_name' => __( 'New Region Name' ),
+    'menu_name' => __( 'Regions' ),
+  );
+
+  register_taxonomy('regions',array('portfolio'), array(
+    'hierarchical' => true,
+    'labels' => $region_labels,
+    'show_ui' => true,
+    'show_admin_column' => true,
+    'query_var' => true,
+    'rewrite' => array( 'slug' => 'region' ),
+  ));
+
 ?>

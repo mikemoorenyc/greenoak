@@ -15,7 +15,7 @@ $propargs = array(
   ),
   'show_ui' => true,
   'capability_type' => 'page',
-  'hierarchical' => true,
+  'hierarchical' => false,
   'has_archive' => false,
   'rewrite' => array('slug' => 'maps'),
   'query_var' => true,
