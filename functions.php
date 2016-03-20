@@ -69,6 +69,9 @@ include 'backend-modules/map-component/entry-point.php';
 //RENAME NEWS
 include 'backend-modules/rename-news.php';
 
+//POST TYPE SWITCHER
+include 'backend-modules/post-type-switcher/include.php';
+
 
 
 ?>
