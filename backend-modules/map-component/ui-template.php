@@ -1,5 +1,5 @@
 <style>
-@import url('<?php echo get_bloginfo('template_url')?>/backend-modules/map-component/map-styles.css');
+<?php include 'map-styles.css';?>
 </style>
 
 <div id="map-holder">
@@ -80,8 +80,8 @@ window.onbeforeunload = confirmOnPageExit;
 
 </script>
 <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?v=3"></script>
-<script src="<?php echo get_bloginfo('template_url')?>/backend-modules/map-component/infobox.js"></script>
-<script src="<?php echo get_bloginfo('template_url')?>/backend-modules/map-component/map-scripts.js"></script>
+<script><?php include 'infobox.js';?></script>
+<script><?php include 'map-scripts.js';?></script>
 
 <div class="hide" style="display:none;">
 <?php

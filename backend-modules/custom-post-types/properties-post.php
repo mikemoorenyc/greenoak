@@ -19,7 +19,7 @@ $propargs = array(
   'has_archive' => false,
   'rewrite' => array('slug' => 'portfolio'),
   'query_var' => true,
-  'menu_icon' => get_bloginfo('template_url').'/assets/imgs/icon-portfolio.png',
+  'menu_icon' => 'dashicons-building',
   'supports' => array(
       'title',
       'revisions',

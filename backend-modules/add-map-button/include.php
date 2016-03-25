@@ -91,7 +91,7 @@ function map_modal_content() {
 
   </div>
   <style>
-  @import url('<?php echo get_bloginfo('template_url')?>/backend-modules/add-map-button/add-map-styles.css');
+  <?php include 'add-map-styles.css';?>
   </style>
 
 

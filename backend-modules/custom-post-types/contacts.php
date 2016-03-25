@@ -19,7 +19,7 @@ $args = array(
   'has_archive' => false,
   'rewrite' => array('slug' => 'contacts'),
   'query_var' => true,
-  'menu_icon' => get_bloginfo('template_url').'/assets/imgs/icon-contacts.png',
+  'menu_icon' =>'dashicons-id',
   'supports' => array(
       'title',
       'revisions',

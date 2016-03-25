@@ -71,7 +71,8 @@ include 'backend-modules/rename-news.php';
 
 //POST TYPE SWITCHER
 include 'backend-modules/post-type-switcher/include.php';
-
+//SUPER ADMIN
+include 'backend-modules/super-admin.php';
 
 
 ?>

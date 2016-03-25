@@ -19,7 +19,7 @@ $team = array(
   'has_archive' => false,
   'rewrite' => array('slug' => 'portfolio'),
   'query_var' => true,
-  'menu_icon' => get_bloginfo('template_url').'/assets/imgs/icon-team.png',
+  'menu_icon' => 'dashicons-groups',
   'supports' => array(
       'title',
       'revisions',

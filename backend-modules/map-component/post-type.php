@@ -19,7 +19,7 @@ $propargs = array(
   'has_archive' => false,
   'rewrite' => array('slug' => 'maps'),
   'query_var' => true,
-  'menu_icon' => get_bloginfo('template_url').'/assets/imgs/icon-gps.png',
+  'menu_icon' => 'dashicons-location-alt',
   'supports' => array(
       'title',
       'revisions',
