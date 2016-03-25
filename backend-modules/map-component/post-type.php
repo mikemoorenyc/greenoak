@@ -4,7 +4,7 @@ function map_type_init() {
 //PROPERTY
 $propargs = array(
   'label' => 'Maps',
-  'public' => true,
+  'public' => false,
   'labels' => array(
     'add_new_item' => 'Add New Map',
     'name' => 'Maps',

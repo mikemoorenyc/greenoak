@@ -4,7 +4,7 @@ function contacts_init() {
 //PROPERTY
 $args = array(
   'label' => 'Contacts',
-  'public' => true,
+  'public' => false,
   'labels' => array(
     'add_new_item' => 'Add New Contact',
     'name' => 'Contacts',
