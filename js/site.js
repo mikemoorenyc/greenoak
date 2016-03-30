@@ -27,17 +27,37 @@ function siteInit() {
     }.orientation();
   //theHistory();
 
-  var date = new Date();
-  hour = date.getHours();
-  minute = date.getMinutes();
-  angle = (hour * 30) + (minute / 2);
 
-  $('.clock-thing .hours').css(
-    {
-      'transform' : 'rotate('+angle+'deg)'
-    }
-  )
-  $('.clock-thing .minutes').css('transform', 'rotate('+(minute * 6)+'deg)')
+
+
+
+
+
+
+
+
+
+
+
+
+  function dateMaker() {
+
+    $('.clock-thing').each(function(){
+      var theDiff = $(this).data('diff');
+      var date = new Date();
+      date.setHours(date.getUTCHours() + theDiff);
+      var hour = date.getHours();
+      var minute = date.getUTCMinutes();
+      var angle = (hour * 30) + (minute / 2);
+      $(this).find('.hours').css(
+        {
+          'transform' : 'rotate('+angle+'deg)'
+        }
+      )
+      $(this).find('.minutes').css('transform', 'rotate('+(minute * 6)+'deg)');
+    });
+  }
+  dateMaker();
 
 
 
