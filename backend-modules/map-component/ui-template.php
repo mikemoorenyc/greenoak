@@ -79,7 +79,7 @@ window.onbeforeunload = confirmOnPageExit;
 
 
 </script>
-<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?v=3"></script>
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?v=3&libraries=places"></script>
 <script><?php include 'infobox.js';?></script>
 <script><?php include 'map-scripts.js';?></script>
 

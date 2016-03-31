@@ -52,6 +52,11 @@ jQuery(document).ready(function( $ ) {
 
     return false;
   });
+  //SET UP SEARCH BOX
+  var input = document.getElementById('search-input');
+  var searchBox = new google.maps.places.SearchBox(input);
+  //map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
 
   //CHANGE ZOOM LEVEL
   $('#set-zoom-level').click(function(){
@@ -70,7 +75,7 @@ jQuery(document).ready(function( $ ) {
   geocoder = new google.maps.Geocoder();
 
   $('#search-holder .search-btn').click(function(){
-    searchFetcher();
+    //searchFetcher();
 
     return false;
   });
@@ -79,9 +84,15 @@ jQuery(document).ready(function( $ ) {
   }
   $( "#search-input" ).keydown(function(event){
     if (event.keyCode == 13) {
-      searchFetcher();
+    //  searchFetcher();
       return false;
     }
+
+  });
+  searchBox.addListener('places_changed', function() {
+    console.log(searchBox.getPlaces());
+
+    //https://developers.google.com/maps/documentation/javascript/examples/places-searchbox
 
   });
   function searchFetcher(location) {
