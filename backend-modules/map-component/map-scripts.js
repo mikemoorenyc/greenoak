@@ -90,8 +90,8 @@ jQuery(document).ready(function( $ ) {
 
   });
   searchBox.addListener('places_changed', function() {
-    console.log(searchBox.getPlaces());
-
+    var location = searchBox.getPlaces()[0].geometry.location;
+    map.setCenter(location);
     //https://developers.google.com/maps/documentation/javascript/examples/places-searchbox
 
   });
@@ -113,6 +113,26 @@ jQuery(document).ready(function( $ ) {
       }
     });
 
+  }
+
+  //ADDDING A MAP POINT
+  $('#add-a-point').click(function(){
+    $('#selector-map').addClass('adding-a-point');
+    map.setOptions({
+      zoomControl: false,
+      draggable: false
+    });
+    return false;
+  });
+  map.addListener('click', function(event) {
+    if(!$('#selector-map').hasClass('adding-a-point')) {
+      return false;
+    }
+    pointAdder(event.latLng)
+  });
+
+  function pointAdder(position) {
+    console.log(position);
   }
 
 
