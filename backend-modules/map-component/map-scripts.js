@@ -124,6 +124,8 @@ jQuery(document).ready(function( $ ) {
     });
     return false;
   });
+  
+
   map.addListener('click', function(event) {
     if(!$('#selector-map').hasClass('adding-a-point')) {
       return false;
