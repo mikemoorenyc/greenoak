@@ -91,3 +91,11 @@
     }
   }
 }
+
+
+//ADDING A POINT
+#map-holder.adding-a-point {
+  button#set-map-center, button#set-zoom-level {
+    display:none;
+  }
+}

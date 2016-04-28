@@ -115,19 +115,35 @@ jQuery(document).ready(function( $ ) {
 
   }
 
+  //CANCEL ADD
+  function cancelAddPoint() {
+    $('#map-holder').removeClass('adding-a-point');
+    map.setOptions({
+      zoomControl: true,
+      draggable: true
+    });
+    $('#add-a-point').text('Add a point of interest');
+  }
+
   //ADDDING A MAP POINT
   $('#add-a-point').click(function(){
-    $('#selector-map').addClass('adding-a-point');
-    map.setOptions({
-      zoomControl: false,
-      draggable: false
-    });
+    if($('#map-holder').hasClass('adding-a-point')) {
+        cancelAddPoint();
+    } else {
+      $('#map-holder').addClass('adding-a-point');
+      map.setOptions({
+        zoomControl: false,
+        draggable: false
+      });
+      $(this).text('Cancel');
+    }
+
     return false;
   });
-  
+
 
   map.addListener('click', function(event) {
-    if(!$('#selector-map').hasClass('adding-a-point')) {
+    if(!$('#map-holder').hasClass('adding-a-point')) {
       return false;
     }
     pointAdder(event.latLng)

@@ -54,6 +54,7 @@ jQuery('#publishing-action input').click(function(){
   stateChange = false;
 });
 //STATE CHANGE
+/*
 var confirmOnPageExit = function (e)
 {
     if(stateChange == false) {
@@ -76,7 +77,7 @@ var confirmOnPageExit = function (e)
     return message;
 };
 window.onbeforeunload = confirmOnPageExit;
-
+*/
 
 </script>
 <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?v=3&libraries=places"></script>

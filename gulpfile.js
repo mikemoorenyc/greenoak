@@ -72,8 +72,7 @@ gulp.task('templatecrush', function() {
 });
 
 //IMAGE PROCESSING
-var pngcrush = require('imagemin-pngcrush'),
-    svgstore = require('gulp-svgstore'),
+var svgstore = require('gulp-svgstore'),
     imagemin = require('gulp-imagemin');
 
 gulp.task('svgstore', function () {
@@ -87,7 +86,7 @@ gulp.task('svgstore', function () {
 gulp.task('imgmin', function () {
   gulp.src('assets/imgs/**/*')
     .pipe(changed('../'+buildDir+'/assets/imgs'))
-    .pipe(imagemin({interlaced: true, progressive: true,svgoPlugins: [{removeViewBox: false}],use: [pngcrush()]}))
+    .pipe(imagemin({interlaced: true, progressive: true,svgoPlugins: [{removeViewBox: false}],use: []}))
     .pipe(gulp.dest('../'+buildDir+'/assets/imgs'));
 });
 
