@@ -111,7 +111,7 @@ gulp.task('backend-modules', function(){
   .pipe(minifyCSS({keepBreaks:false, keepSpecialComments: 0}))
   .pipe(gulp.dest('../'+buildDir+'/backend-modules'));
   gulp.src(['backend-modules/**/*.js'])
-  .pipe(uglify())
+  .pipe(uglify({mangle:false}))
   .on('error', console.error.bind(console))
   .pipe(gulp.dest('../'+buildDir+'/backend-modules'));
 });

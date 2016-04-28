@@ -106,6 +106,15 @@ function map_save_meta_box_data( $post_id ) {
   	update_post_meta( $post_id, '_zoomLevel', $my_data );
   }
 
+	if ( ! isset( $_POST['point_array'] ) ) {
+		return;
+	} else {
+    // Sanitize user input.
+  	$my_data = sanitize_text_field( $_POST['point_array'] );
+    // Update the meta field in the database.
+  	update_post_meta( $post_id, '_pointArray', $my_data );
+  }
+
 
 
 

@@ -6,17 +6,41 @@
   <?php
   $center_coordinates = get_post_meta( $post->ID, '_centerCoordinates', true );
   $zoom_level = get_post_meta( $post->ID, '_zoomLevel', true );
-  $point_array = get_post_meta( $post->ID, '_pointArray', true );
+  $point_array = preg_replace( "/\r|\n/", "", get_post_meta( $post->ID, '_pointArray', true ) );
   if($center_coordinates == false) {
     $center_coordinates = '40.761731,-73.981816';
   }
   if($zoom_level == false) {
     $zoom_level = '15';
   }
+  $pa = json_decode($point_array);
+  if(!empty($pa)) {
+
+    $new = '[';
+    $looper = 0;
+    foreach($pa as $p) {
+      if($looper > 0) {
+        $new .= ',';
+      }
+      $new .='{';
+      $new .= 'id:'.$p->id.',';
+      $new .= 'title:"'.$p->title.'",';
+      $new .= 'lat:'.$p->lat.',';
+      $new .= 'lng:'.$p->lng.'}';
+      $looper++;
+    }
+    $new .=']';
+    $point_array = $new;
+
+
+  }
+
   if($point_array == false) {
     $point_array = '[]';
   }
+
   ?>
+
   <input type="hidden" id="google_coordinates" name="google_coordinates" value="<?php echo $center_coordinates;?>" />
   <input type="hidden" id="zoom_level" name="zoom_level" value="<?php echo $zoom_level;?>" />
   <input type="hidden" id="point_array" name="point_array" value="<?php echo $point_array;?>" />
@@ -37,10 +61,27 @@
   </div>
 
 </div>
+
+<div id="pop-up-template" class="point-pop" style="display:none;">
+  <div class="top">
+    <label for="point-name">Point Name</label>
+    <input type="text" id="point-name" name="point-name" value="***REPLACE***" />
+  </div>
+  <div class="footer">
+    <a href="#" class="remove remove-point" id="">Remove</a>
+    <button class="button cancel-point" id="">Cancel</button>
+    <button class="button button-primary save-point" id="">Save</button>
+    <br class="clear" />
+  <div>
+
+
+</div>
+
 <script>
 var centerString = '<?php echo $center_coordinates;?>';
 var centerArray = centerString.split(',');
 var initialStates = {
+  siteDir: '<?php echo get_bloginfo('template_url');?>',
   center: {
     string: centerString,
     lat: parseFloat(centerArray[0]),
@@ -49,10 +90,12 @@ var initialStates = {
   zoom: <?php echo $zoom_level;?>,
   points:<?php echo $point_array;?>
 }
+/*
 var stateChange = false;
 jQuery('#publishing-action input').click(function(){
   stateChange = false;
 });
+*/
 //STATE CHANGE
 /*
 var confirmOnPageExit = function (e)
@@ -83,12 +126,13 @@ window.onbeforeunload = confirmOnPageExit;
 <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?v=3&libraries=places"></script>
 <script><?php include 'infobox.js';?></script>
 <script><?php include 'map-scripts.js';?></script>
-
+<!--
 <div class="hide" style="display:none;">
 <?php
 $svg = file_get_contents(get_bloginfo('template_url').'/assets/svgs.svg');
 echo $svg;
 ?>
+-->
 
 </div>
 

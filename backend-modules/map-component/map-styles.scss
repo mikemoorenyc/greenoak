@@ -22,19 +22,10 @@
   height: 50px;
   background:none;
   width: 100%;
-  padding: 0 75px 0 10px;
+  padding:   0 10px;
   font-size: 25px;
 }
-#map-holder #search-holder .search-btn {
-  display: block;
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 50px;
-  height: 50px;
-  background: red;
-  box-shadow: none !important;
-}
+
 #top-ui {
   #map-controls {
     padding-top:10px;
@@ -92,10 +83,72 @@
   }
 }
 
+.point-pop {
+  position:relative;
+  width: 300px;
+  padding: 0px;
+  background: white;
+  border: 1px solid #ddd;
+  font-family: "Open Sans",sans-serif;
+  font-size:13px;
+  .top {
+    padding:15px;
+  }
+  .footer {
+    padding:10px;
+    border-top: 1px solid #ddd;
+    background: #f5f5f5;
+    text-align: right;
+    button {
+      margin-left: 5px;
+    }
+    .remove {
+      float:left;
+      line-height: 28px;
+      color:#a00;
+      text-decoration: none;
+      &:hover {
+        color:red;
+      }
+    }
+  }
+  label, input {
+    display: block;
+    width: 100%;
+  }
+  &:after {
+    display: block;
+    content:'';
+    width: 10px;
+    height: 10px;
+    background: #f5f5f5;
+    border: 1px solid #ddd;
+    border-width: 0 0 1px 1px;
+    position:absolute;
+    transform: rotate(-45deg) ;
+    left: 50%;
+    bottom:-6px;
+    margin-left:-5px;
+  }
+  &.new-point {
+    .remove {
+      display:none;
+    }
+  }
+
+}
 
 //ADDING A POINT
 #map-holder.adding-a-point {
   button#set-map-center, button#set-zoom-level {
     display:none;
+  }
+  &.pop-open {
+    #map-controls {
+      display:none;
+    }
+  }
+  #selector-map .gm-style > div{
+    cursor: crosshair !important;
   }
 }
